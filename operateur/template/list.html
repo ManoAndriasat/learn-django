@@ -1,0 +1,15 @@
+<h1>Liste des opérateurs</h1>
+<table>
+    <th>
+        <td>id_operateur</td>
+        <td>nom</td>
+    </th>
+    <th>
+        {% for operateur in operateurs %}
+            <tr>
+                <td>{{ operateur.id_operateur }}</td>
+                <td>{{ operateur.nom }}</td>
+            </tr>
+        {% endfor %}
+    </th>
+</table>
