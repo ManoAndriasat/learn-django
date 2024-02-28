@@ -1,5 +1,5 @@
 from django.db import models
-from .models import Operateur
+from operateur.models import Operateur
 
 class Smartphone(models.Model):
     id = models.IntegerField(primary_key=True)

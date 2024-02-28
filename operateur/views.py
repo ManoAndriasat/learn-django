@@ -1,9 +1,24 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Operateur
 from django.http import HttpResponseBadRequest
+from django.db import connection
+
+# def voir(request):
+#     operateurs = Operateur.objects.all()
+#     return render(request, 'list.html', {'operateurs': operateurs})
 
 def voir(request):
-    operateurs = Operateur.objects.all()
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT * FROM operateur")
+        rows = cursor.fetchall()
+    
+    operateurs = []
+    for row in rows:
+        operateur = Operateur()
+        operateur.id_operateur = row[0]
+        operateur.nom = row[1]
+        operateur.prix = operateur.id_operateur * 125.2
+        operateurs.append(operateur)
     return render(request, 'list.html', {'operateurs': operateurs})
 
 def create(request):
