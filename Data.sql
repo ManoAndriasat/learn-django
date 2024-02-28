@@ -12,3 +12,4 @@ create table phone(
 insert into operateur values(1,'telma');
 insert into operateur values(2,'airtel');
 insert into operateur values(3,'orange');
+insert into operateur values(4,'bip');

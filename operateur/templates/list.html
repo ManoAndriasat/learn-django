@@ -1,17 +1,49 @@
 <h1>Liste des opérateurs</h1>
 <table>
-    <thead> <!-- Entête du tableau -->
-        <tr> <!-- Ligne de l'entête -->
-            <th>id_operateur</th> <!-- Cellule de l'entête -->
-            <th>nom</th> <!-- Cellule de l'entête -->
+    <thead>
+        <tr>
+            <th>id_operateur</th>
+            <th>nom</th>
         </tr>
     </thead>
-    <tbody> <!-- Corps du tableau -->
+    <tbody>
         {% for operateur in operateurs %}
-            <tr> <!-- Ligne du corps -->
-                <td>{{ operateur.id_operateur }}</td> <!-- Cellule du corps -->
-                <td>{{ operateur.nom }}</td> <!-- Cellule du corps -->
-            </tr>
+        <tr>
+            <td>{{ operateur.id_operateur }}</td>
+            <td>{{ operateur.nom }}</td>
+            <td>{{ operateur.prix }}</td>
+        </tr>
         {% endfor %}
     </tbody>
 </table>
+
+<form id="update_form" method="post">
+    <p>update</p>
+    {% csrf_token %}
+    id<input type="number" name="id_operateur" id="id_operateur" onchange="updateFormAction()">
+    nom<input type="text" name="nom" id="nom">
+    <input type="submit" value="update">
+</form>
+
+<form action="/operateur/delete/">
+    <p>delete</p>
+    {% csrf_token %}
+    id<input type="number" name="id_operateur" id="id_operateur">
+    <input type="submit" value="delete">
+</form>
+
+<form action="/operateur/update/">
+    <p>update GET</p>
+    {% csrf_token %}
+    id<input type="number" name="id_operateur">
+    nom<input type="text" name="nom">
+    <input type="submit" value="update">
+</form>
+
+<script>
+    function updateFormAction() {
+        var id_operateur = document.getElementById("id_operateur").value;
+        var form = document.getElementById("update_form");
+        form.action = "/operateur/update/" + id_operateur + "/";
+    }
+</script>

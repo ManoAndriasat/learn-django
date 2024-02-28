@@ -16,9 +16,17 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from operateur.views import voir
+from operateur.views import create
+from operateur.views import update
+from operateur.views import update_get
+from operateur.views import delete
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('operateur/list/', voir, name='list'),
+    path('operateur/create/', create, name='create'),
+    path('operateur/update/<int:id_operateur>/', update, name='update'),
+    path('operateur/update/', update_get, name='update_get'),
+    path('operateur/delete/', delete, name='delete'),
 ]
 
