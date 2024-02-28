@@ -26,6 +26,12 @@ INSTALLED_APPS = [
     'medicament',
 ]
 
+<!-- AJOUTE DANS MODELS POUR LES CLASSE DE MAPPING -->
+class nom_model(models.Model):
+
+    class Meta:
+        db_table = 'nom_table'
+
 <!-- EXECUTION -->
 python manage.py makemigrations
 python manage.py migrate

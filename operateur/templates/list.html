@@ -1,15 +1,17 @@
 <h1>Liste des opérateurs</h1>
 <table>
-    <th>
-        <td>id_operateur</td>
-        <td>nom</td>
-    </th>
-    <th>
+    <thead> <!-- Entête du tableau -->
+        <tr> <!-- Ligne de l'entête -->
+            <th>id_operateur</th> <!-- Cellule de l'entête -->
+            <th>nom</th> <!-- Cellule de l'entête -->
+        </tr>
+    </thead>
+    <tbody> <!-- Corps du tableau -->
         {% for operateur in operateurs %}
-            <tr>
-                <td>{{ operateur.id_operateur }}</td>
-                <td>{{ operateur.nom }}</td>
+            <tr> <!-- Ligne du corps -->
+                <td>{{ operateur.id_operateur }}</td> <!-- Cellule du corps -->
+                <td>{{ operateur.nom }}</td> <!-- Cellule du corps -->
             </tr>
         {% endfor %}
-    </th>
+    </tbody>
 </table>

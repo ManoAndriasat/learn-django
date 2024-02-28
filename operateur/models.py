@@ -6,3 +6,6 @@ class Operateur(models.Model):
 
     def __str__(self):
         return f"{self.id_operateur} {self.nom}"
+
+    class Meta:
+        db_table = 'operateur'
