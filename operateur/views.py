@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Operateur
-from .forms import OperateurForm
 
 def voir(request):
     operateurs = Operateur.objects.all()
@@ -12,24 +11,22 @@ def detail(request, id_operateur):
 
 def create(request):
     if request.method == 'POST':
-        form = OperateurForm(request.POST)
-        if form.is_valid():
-            operateur = form.save()
-            return redirect('detail', id_operateur=operateur.id_operateur)
+        id_operateur = request.POST.get('id_operateur')
+        nom = request.POST.get('nom')
+        operateur = Operateur.objects.create(id_operateur=id_operateur, nom=nom)
+        return redirect('detail', id_operateur=operateur.id_operateur)
     else:
-        form = OperateurForm()
-    return render(request, 'form.html', {'form': form})
+        return render(request, 'form.html')
 
 def update(request, id_operateur):
     operateur = get_object_or_404(Operateur, id_operateur=id_operateur)
     if request.method == 'POST':
-        form = OperateurForm(request.POST, instance=operateur)
-        if form.is_valid():
-            operateur = form.save()
-            return redirect('detail', id_operateur=operateur.id_operateur)
+        nom = request.POST.get('nom')
+        operateur.nom = nom
+        operateur.save()
+        return redirect('detail', id_operateur=operateur.id_operateur)
     else:
-        form = OperateurForm(instance=operateur)
-    return render(request, 'form.html', {'form': form})
+        return render(request, 'form.html')
 
 def delete(request, id_operateur):
     operateur = get_object_or_404(Operateur, id_operateur=id_operateur)

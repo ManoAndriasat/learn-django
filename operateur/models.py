@@ -1,6 +1,6 @@
 from django.db import models
 
-class operateur(models.Model):
+class Operateur(models.Model):
     id_operateur = models.IntegerField(primary_key=True)
     nom = models.CharField(max_length=100)
 
