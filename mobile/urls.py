@@ -19,6 +19,6 @@ from operateur.views import voir
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('operateur/list', voir, name='list'),
+    path('operateur/list/', voir, name='list'),
 ]
 
