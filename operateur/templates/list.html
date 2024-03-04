@@ -17,8 +17,8 @@
     </tbody>
 </table>
 
-<form id="update_form" method="post">
-    <p>update</p>
+<form action="operateur/create" method="post">
+    <p>create</p>
     {% csrf_token %}
     id<input type="number" name="id_operateur" id="id_operateur" onchange="updateFormAction()">
     nom<input type="text" name="nom" id="nom">
